@@ -6,7 +6,7 @@ cluster_name       = "voting-cluster"
 kubernetes_version = "1.34"
 
 # EC2 Public IP for administrative access
-admin_cidr = "16.170.110.199/32"
+admin_cidr = "54.236.104.239/32"
 
 # EKS Worker Nodes (example values)
 node_instance_type = "c7i-flex.large"
