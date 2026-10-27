@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,7 +15,7 @@ spec:
     spec:
       containers:
         - name: worker
-          image: harathi2026/voting-worker:c89af3717a74
+          image: push356/voting-worker:c89af3717a74
           env:
             - name: REDIS_HOST
               value: redis
