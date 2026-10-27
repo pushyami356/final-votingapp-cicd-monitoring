@@ -1,4 +1,9 @@
-deploymentMode: Monolithic
+
+deploymentMode: SingleBinary
+
+serviceAccount:
+  create: false
+  name: loki
 
 loki:
   auth_enabled: false
@@ -19,83 +24,35 @@ loki:
   storage:
     type: s3
     bucketNames:
-      chunks: voting-loki-chunks-263860684319-eu-north-1
-      ruler: voting-loki-ruler-263860684319-eu-north-1
+      chunks: voting-loki-chunks-836003244254-eu-north-1
+      ruler: voting-loki-ruler-836003244254-eu-north-1
+      admin: voting-loki-chunks-836003244254-eu-north-1
     s3:
       region: eu-north-1
 
-  limits_config:
-    retention_period: 168h
-    allow_structured_metadata: true
-
-  compactor:
-    retention_enabled: true
-    delete_request_store: s3
-
-serviceAccount:
-  create: false
-  name: loki
-
 singleBinary:
   replicas: 1
-
   persistence:
     enabled: true
     storageClass: voting-gp3
-    size: 5Gi
-
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 500m
-      memory: 768Mi
-
-backend:
-  replicas: 0
-
-read:
-  replicas: 0
-
-write:
-  replicas: 0
-
-ingester:
-  replicas: 0
-
-querier:
-  replicas: 0
-
-queryFrontend:
-  replicas: 0
-
-queryScheduler:
-  replicas: 0
-
-distributor:
-  replicas: 0
-
-compactor:
-  replicas: 0
-
-indexGateway:
-  replicas: 0
-
-bloomPlanner:
-  replicas: 0
-
-bloomBuilder:
-  replicas: 0
-
-bloomGateway:
-  replicas: 0
-
-minio:
-  enabled: false
+    size: 10Gi
 
 chunksCache:
   enabled: false
 
 resultsCache:
   enabled: false
+
+minio:
+  enabled: false
+
+gateway:
+  enabled: true
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
+backend:
+  replicas: 0
